@@ -15,7 +15,10 @@ import { Sellers } from './sellers/sellers';
     database: 'conglomerate_api',
     entities: [Sellers],
     synchronize: true,  
-  }), SellersModule],
+  }),
+    TypeOrmModule.forFeature([Sellers]),
+   SellersModule,
+  ],
   
   controllers: [AppController],
   providers: [AppService],
