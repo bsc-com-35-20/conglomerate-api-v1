@@ -1,9 +1,11 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SellersModule } from './sellers/sellers.module';
 import { Sellers } from './sellers/sellers';
+import { LoggerMiddleware } from './middlewares/logger.middleware';
+import { SellersController } from './sellers/sellers.controller';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -23,4 +25,10 @@ import { Sellers } from './sellers/sellers';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer){
+    consumer
+    .apply(LoggerMiddleware)
+    .forRoutes(SellersController);
+  }
+}

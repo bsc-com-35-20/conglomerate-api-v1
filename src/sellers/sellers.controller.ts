@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Delete, Param, Put, Body, Patch } from '@nestjs/common';
+import { Controller, Get, Post, Delete, Param, Put, Body, Patch, ParseIntPipe } from '@nestjs/common';
 import { SellersService } from './sellers.service';
 import { Sellers } from './sellers';
 
@@ -13,7 +13,7 @@ export class SellersController {
     }
     //Handling request for one seller
     @Get(':id')
-    async getASeller(@Param('seller_id') id :number): Promise<Sellers>{
+    async getASeller(@Param('id', ParseIntPipe) id :number): Promise<Sellers>{
         return await this.sellersService.findASeller(id);
     }
     //Handling a post request for a seller
@@ -23,7 +23,7 @@ export class SellersController {
     }
     //Handling the delete request for a seller
     @Delete(':id')
-    async deleteASellers(@Param('id') id :number): Promise<void>{
+    async deleteASellers(@Param('id', ParseIntPipe) id :number): Promise<void>{
          await this.sellersService.deleteAllSeller(id);
     }
     //Handling the put request for a seller
