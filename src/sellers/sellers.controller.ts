@@ -1,8 +1,10 @@
-import { Controller, Get, Post, Delete, Param, Put, Body, Patch, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Post, Delete, Param, Put, Body, Patch, ParseIntPipe, UseGuards } from '@nestjs/common';
 import { SellersService } from './sellers.service';
 import { Sellers } from './sellers';
+import { RolesGuard } from 'src/guards/roles.guards';
 
 @Controller('sellers')
+@UseGuards(RolesGuard)
 export class SellersController {
     constructor(private readonly sellersService: SellersService){}
 

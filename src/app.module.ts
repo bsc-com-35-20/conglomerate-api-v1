@@ -6,6 +6,8 @@ import { SellersModule } from './sellers/sellers.module';
 import { Sellers } from './sellers/sellers';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { SellersController } from './sellers/sellers.controller';
+import { BuyersModule } from './buyers/buyers.module';
+import { Buyers } from './buyers/buyers';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -15,11 +17,12 @@ import { SellersController } from './sellers/sellers.controller';
     username: 'chisomo',
     password: '12345678',
     database: 'conglomerate_api',
-    entities: [Sellers],
+    entities: [Sellers, Buyers],
     synchronize: true,  
   }),
-    TypeOrmModule.forFeature([Sellers]),
+    TypeOrmModule.forFeature([Sellers, Buyers]),
    SellersModule,
+   BuyersModule,
   ],
   
   controllers: [AppController],
