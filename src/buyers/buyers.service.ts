@@ -26,7 +26,7 @@ async findABuyer(buyer_id: number): Promise<Buyers>{
     });
 }
 //Method to delete a buyer
-async deleteAllBuyer(id : number): Promise<void>{
+async deleteABuyer(id : number): Promise<void>{
     await this.buyerRepository.delete(id);
 }
 //Method to create a buyer
