@@ -12,6 +12,9 @@ import { ItemsModule } from './items/items.module';
 import { OrdersModule } from './orders/orders.module';
 import { Items } from './items/items';
 import { AuthModule } from './auth/auth.module';
+import { AuthService } from './auth/auth.service';
+import { APP_FILTER, HttpAdapterHost } from '@nestjs/core';
+import { ProductsModule } from './products/products.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -24,16 +27,19 @@ import { AuthModule } from './auth/auth.module';
     entities: [Sellers, Buyers, Items],
     synchronize: true,  
   }),
-    TypeOrmModule.forFeature([Sellers, Buyers]),
+    TypeOrmModule.forFeature([Sellers, Buyers, Items]),
    SellersModule,
    BuyersModule,
    ItemsModule,
    OrdersModule,
    AuthModule,
+   ProductsModule,
   ],
   
   controllers: [AppController],
-  providers: [AppService],
+  providers: [ AppService,
+    HttpAdapterHost,
+      ],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer){

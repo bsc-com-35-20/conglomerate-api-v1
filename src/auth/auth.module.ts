@@ -14,7 +14,7 @@ import { BuyersModule } from 'src/buyers/buyers.module';
     BuyersModule,
     JwtModule.register({
       global: true,
-      secret: 'fjshriwery8wyorwejporw0t09wu498t4ih78y42r892uc09ur23h',
+      secret: 'fjshriwery8wyorwejporw0t09wu498t4ih78y42rchgfyufuyrytrsw8857644ghh892uc09ur23h',
       signOptions: { expiresIn: '60s' },
     }),
   ],

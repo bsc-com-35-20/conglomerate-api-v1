@@ -14,6 +14,11 @@ async findAllBuyers(): Promise<Buyers[]>{
     return await this.buyerRepository.find();
 }
 
+//method for authentication
+async findByEmail (Email_address: string): Promise<Buyers | undefined> {
+    return this.buyerRepository.findOne({ where: { Email_address }});
+}
+
 //Method to get a single buyer
 async findABuyer(buyer_id: number): Promise<Buyers>{
     return await this.buyerRepository.findOne({

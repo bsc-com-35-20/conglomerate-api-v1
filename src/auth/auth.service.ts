@@ -11,12 +11,12 @@ export class AuthService {
   ) {}
 
   async signIn(email: string, password: string) {
-    const user = await this.BuyersService.findOneByEmail(email);
-    if (!user || user.password !== password) {
+    const user = await this.BuyersService.findByEmail(email);
+    if (!user || user.Password !== password) {
       throw new UnauthorizedException('Invalid. Try again');
     }
 
-    const payload = { email: user.email, sub: user.id };
+    const payload = { email: user.Email_address, sub: user.buyer_id };
     const accessToken = this.jwtService.sign(payload, { expiresIn: '60s' });
 
     return {
