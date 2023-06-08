@@ -1,7 +1,8 @@
 import { Body, Controller, Param, Post, Put } from '@nestjs/common';
 import { Products } from './products';
 import { ProductsService } from './products.service';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiCreatedResponse, ApiForbiddenResponse, ApiOkResponse, ApiOperation, ApiTags, ApiUnprocessableEntityResponse } from '@nestjs/swagger';
+import { type } from 'os';
 
 @ApiTags('PRODUCTS')
 @Controller('products')
@@ -17,7 +18,14 @@ async updateProduct(@Param('id') id : number, @Body() productData: Products): Pr
 //Handling the post request for a product
 @Post()
 @ApiOperation({summary: 'Adding products'})
-    async postProduct(@Body() productData: Products ): Promise<Products>{
-        return await this.productsService.addProduct(productData);
+@ApiOperation({summary: 'Creating sellers'})
+    @ApiCreatedResponse({ description: 'Created Succesfully' })
+  @ApiUnprocessableEntityResponse({ description: 'Bad Request' })
+  @ApiForbiddenResponse({ description: 'Unauthorized Request' })
+  addProduct(@Body() products: Products) {
+    return this.productsService.addProduct(products);
+  }
+    async postProduct(@Body() products: Products ): Promise<Products>{
+        return await this.productsService.addProduct(products);
     }
 }

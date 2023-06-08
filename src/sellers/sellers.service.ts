@@ -5,6 +5,15 @@ import { Sellers } from './sellers';
 
 @Injectable()
 export class SellersService {
+    deleteASellers(id: number) {
+      throw new Error('Method not implemented.');
+    }
+    findAll() {
+      throw new Error('Method not implemented.');
+    }
+    remove(arg0: number) {
+      throw new Error('Method not implemented.');
+    }
     constructor(
         @InjectRepository(Sellers)
         private readonly userRepository: Repository<Sellers>,

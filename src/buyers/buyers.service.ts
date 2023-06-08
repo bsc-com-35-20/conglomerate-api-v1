@@ -5,6 +5,9 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class BuyersService {
+postBuyer(buyerData: Buyers) {
+    throw new Error('Method not implemented.');
+}
 constructor(
     @InjectRepository(Buyers)
     private readonly buyerRepository: Repository<Buyers>,
@@ -30,7 +33,7 @@ async deleteABuyer(id : number): Promise<void>{
     await this.buyerRepository.delete(id);
 }
 //Method to create a buyer
-async addSeller(buyer:Buyers): Promise<Buyers>{
+async addBuyer(buyer:Buyers): Promise<Buyers>{
     return await this.buyerRepository.save(buyer);
 }
 async UpdateSeller(id: number, data : Partial<Buyers>): Promise<void>{

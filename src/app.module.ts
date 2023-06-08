@@ -15,6 +15,8 @@ import { AuthModule } from './auth/auth.module';
 import { AuthService } from './auth/auth.service';
 import { APP_FILTER, HttpAdapterHost } from '@nestjs/core';
 import { ProductsModule } from './products/products.module';
+import { Orders } from './orders/orders';
+import { Products } from './products/products';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -24,10 +26,10 @@ import { ProductsModule } from './products/products.module';
     username: 'chisomo',
     password: '12345678',
     database: 'conglomerate_api',
-    entities: [Sellers, Buyers, Items],
+    entities: [Sellers, Buyers, Items, Orders, Products],
     synchronize: true,  
   }),
-    TypeOrmModule.forFeature([Sellers, Buyers, Items]),
+    TypeOrmModule.forFeature([Sellers, Buyers, Items, Orders, Products]),
    SellersModule,
    BuyersModule,
    ItemsModule,
