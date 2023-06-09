@@ -3,8 +3,10 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Sellers } from './sellers';
 
+
 @Injectable()
 export class SellersService {
+
     deleteASellers(id: number) {
       throw new Error('Method not implemented.');
     }

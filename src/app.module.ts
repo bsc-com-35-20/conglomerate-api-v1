@@ -21,11 +21,11 @@ import { Products } from './products/products';
 @Module({
   imports: [TypeOrmModule.forRoot({
     type: 'mysql',
-    host: 'localhost',
+    host: 'sql12.freesqldatabase.com',
     port: 3306,
-    username: 'chisomo',
-    password: '12345678',
-    database: 'conglomerate_api',
+    username: '	sql12624672',
+    password: 'Gdc4IRXjws',
+    database: '	sql12624672',
     entities: [Sellers, Buyers, Items, Orders, Products],
     synchronize: true,  
   }),
