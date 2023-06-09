@@ -25,7 +25,7 @@ import { Products } from './products/products';
     port: 3306,
     username: 'sql12624672',
     password: 'Gdc4IRXjws',
-    database: '	sql12624672',
+    database: 'sql12624672',
     entities: [Sellers, Buyers, Items, Orders, Products],
     synchronize: true,  
   }),
