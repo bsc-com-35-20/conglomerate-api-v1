@@ -6,19 +6,10 @@ import { ApiCreatedResponse, ApiForbiddenResponse, ApiNotFoundResponse, ApiOkRes
 
 @ApiTags('SELLERS')
 @Controller('sellers')
-
+@UseGuards(RolesGuard)
 export class SellersController {
-  authService: any;
-  findAll(): any{
-    throw new Error('No implementation!!!');
-  }
     constructor(private readonly sellersService: SellersService){}
-    @Post('login')
-    @ApiOperation({summary: 'Verify login details'})
-    async signIn(@Body() signInDto: { email: string; password: string }) {
-      const { email, password } = signInDto;
-      return this.authService.signIn(email, password);
-    }
+
     // Handling the get request for all seller
     @Get()
     @ApiOperation({summary: 'Getting all sellers'})
