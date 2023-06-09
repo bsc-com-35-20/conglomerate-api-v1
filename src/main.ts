@@ -14,7 +14,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
   .setTitle('Conglomerate web app')
-  .setDescription('Combination of student business')
+  .setDescription('Combination of student businesses')
   .setVersion('1.0.4')
   .addTag('')
   .build();

@@ -6,13 +6,22 @@ import { ApiCreatedResponse, ApiForbiddenResponse, ApiNotFoundResponse, ApiOkRes
 
 @ApiTags('SELLERS')
 @Controller('sellers')
-@UseGuards(RolesGuard)
+
 export class SellersController {
+  findAll(): any{
+    throw new Error('No implementation!!!');
+  }
     constructor(private readonly sellersService: SellersService){}
+    @Post('login')
+    @ApiOperation({summary: 'Verify login details'})
+    async signIn(@Body() sellerData: Sellers ): Promise<Sellers>{
+      return await this.sellersService.addSeller(sellerData);
+  }
 
     // Handling the get request for all seller
     @Get()
     @ApiOperation({summary: 'Getting all sellers'})
+    @ApiOperation({description: 'When run first, it shows empty parameters but when executed after POST , it gets all users that have been posted' })
     @ApiOkResponse({ description: 'The resources were returned successfully' })
   @ApiForbiddenResponse({ description: 'Unauthorized Request' })
   findAllSellers() {
