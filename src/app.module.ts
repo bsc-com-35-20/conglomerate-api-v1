@@ -23,7 +23,7 @@ import { Products } from './products/products';
     type: 'mysql',
     host: 'sql12.freesqldatabase.com',
     port: 3306,
-    username: '	sql12624672',
+    username: 'sql12624672',
     password: 'Gdc4IRXjws',
     database: '	sql12624672',
     entities: [Sellers, Buyers, Items, Orders, Products],
